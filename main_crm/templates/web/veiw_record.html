@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container bg-light shadow-md p-5 form-layout ">
+
+<h1>{{ record.first_name|capfirst }} {{ record.last_name|capfirst }}</h1>
+<hr style="border: 2px solid; margin: 20px 100px;">
+
+<ul>
+    <li>ID: {{ record.id }}</li>
+    <li>Email: {{ record.email }}</li>
+    <li>Category: {{ record.category }}</li>
+    <li>Skills: {{ record.skills }}</li>
+    <li>Phone Number: {{ record.phone }}</li>
+    <li>Address: {{ record.address }}</li>
+    <li>Date: {{ record.created_at }}</li>
+</ul>
+<br>
+<a href="{% url 'update_record' record.id %}" class="btn btn-outline-primary">Update <i class="fa fa-wrench" aria-hidden="true"></i>
+</a>
+<a href="{% url 'delete_record' record.id %}" onclick="return confirm('Are you sure you want to delete this record?')" class="btn btn-outline-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i>
+</a>
+
+
+</div>
+
+{% endblock %}
