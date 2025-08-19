@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<br>
+<table class="table table-striped">
+    {% if results %}
+        {% for record in results %}
+  <thead>
+    <tr>
+      <br>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Category</th>
+      <th scope="col">Skills</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date</th>
+      <th scope="col">View</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+        
+        <tr>
+        <td> {{ record.id }} </td>
+        <td> {{ record.first_name }} </td>
+        <td> {{ record.last_name }} </td>
+        <td> {{ record.email }} </td>
+        <td> {{ record.category }} </td>
+        <td> {{ record.skills }} </td>
+        <td> {{ record.phone }} </td>
+        <td> {{ record.address }} </td>
+        <td> {{ record.created_at }} </td>
+        <td> <a href="{% url 'view_record' record.id %}" class="btn btn-outline-primary btn-sm">View</a> </td>
+        </tr>
+
+        {% endfor %}
+
+    {% else %}
+        <td colspan="10" class="text-center" style="font-size: 18px;">
+            <br>
+            <div class="alert alert-warning" role="alert">
+                No results found for "{{ query }}"
+            </div>
+            
+        </td>
+    {% endif %}
+  </tbody>
+</table>
+
+</div>
+{% endblock %}
